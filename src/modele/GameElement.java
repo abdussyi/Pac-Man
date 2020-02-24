@@ -1,6 +1,6 @@
 package modele;
 
-//il se peut que ce soit une interface, affaire à suivre
+//il se peut que ce soit une interface, affaire Ã  suivre
 public abstract class GameElement {
 	
 	protected String png;

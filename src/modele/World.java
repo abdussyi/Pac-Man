@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
+import vue.TextureFactory;
+
 public class World {
 	//Les champs
 	// 28 colonne et 31 lignes
@@ -12,6 +14,7 @@ public class World {
 	private final static int LIGNES = 31;
 	private int ligneCourante, colonneCourante;
 	private GameElement monde[][];
+	public Pacman pacman;
 	
 	public World(String repertoireFichierMonde)
 	{
@@ -24,6 +27,17 @@ public class World {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		//L'emplacement du pacman est faites manuellemeent
+		pacman = new Pacman();
+		monde[23][14]=pacman;
+		pacman.setCoord(23, 14);
+	}
+	
+	public void setPacmanPosition(int x,int y)
+	{
+		pacman.setX(x);
+		pacman.setY(y);
+		monde[x][y]=pacman;
 	}
 	
 	public GameElement[][] getMonde() {
@@ -55,8 +69,8 @@ public class World {
 	
 	public void chargeurMondeDepuisFichiers(String repertoieFichier) throws IOException
 	{
-		//ces deux premieres variables permettent de remplir efficacement le tableau
 		
+		//ces deux premieres variables permettent de remplir efficacement le tableau
 		File csvFile = new File(repertoieFichier);
 		if (csvFile.isFile()) {
 			BufferedReader csvReader = new BufferedReader(new FileReader(repertoieFichier));
@@ -78,11 +92,27 @@ public class World {
 			    	augmenterLigneColonneCourante();
 			    	break;
 			    	
-			    	case 3 : setUneCaseMonde(ligneCourante,colonneCourante,new Fantome());
+			    	case 3 : setUneCaseMonde(ligneCourante,colonneCourante,new FantomeRouge());
 			    	augmenterLigneColonneCourante();
 			    	break;
 			    	
-			    	case 2 : setUneCaseMonde(ligneCourante,colonneCourante,new Bouffe());
+			    	case 2 : setUneCaseMonde(ligneCourante,colonneCourante,new SuperPellet());
+			    	augmenterLigneColonneCourante();
+			    	break;
+			    	
+			    	case 4 : setUneCaseMonde(ligneCourante,colonneCourante,new Pellet());
+			    	augmenterLigneColonneCourante();
+			    	break;
+			    	
+			    	case 5 : setUneCaseMonde(ligneCourante,colonneCourante,new FantomeRose());
+			    	augmenterLigneColonneCourante();
+			    	break;
+			    	
+			    	case 6 : setUneCaseMonde(ligneCourante,colonneCourante,new FantomeBleu());
+			    	augmenterLigneColonneCourante();
+			    	break;
+
+			    	case 7 : setUneCaseMonde(ligneCourante,colonneCourante,new FantomeJaune());
 			    	augmenterLigneColonneCourante();
 			    	break;
 			    	}
