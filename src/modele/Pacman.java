@@ -1,9 +1,24 @@
 package modele;
 
+import com.badlogic.gdx.graphics.Texture;
+
+import vue.TextureFactory;
+
 public class Pacman extends MovingGameElement{
 	
 	private int l, c;
-	Direction direction;
+	private Direction direction;
+	private Texture textureDuMoment;
+
+	private Texture neutre;
+	private Texture droite1;
+	private Texture droite2;
+	private Texture gauche1;
+	private Texture gauche2;
+	private Texture haut1;
+	private Texture haut2;
+	private Texture bas1;
+	private Texture bas2;
 	
 	public Pacman()
 	{
@@ -11,12 +26,26 @@ public class Pacman extends MovingGameElement{
 		l =0;
 		c =0;
 		setDirection(Direction.Neutre);
+
+
+		neutre = textureDuMoment=TextureFactory.getInstance().getTextureSelonNom("images/pacman-3.png");
+        droite1 = textureDuMoment=TextureFactory.getInstance().getTextureSelonNom("images/pacmanRight.png");
+        droite2 = textureDuMoment=TextureFactory.getInstance().getTextureSelonNom("images/pacmanRight-2.png");
+        gauche1 = textureDuMoment=TextureFactory.getInstance().getTextureSelonNom("images/pacmanLeft.png");
+        gauche2 = textureDuMoment=TextureFactory.getInstance().getTextureSelonNom("images/pacmanLeft-2.png");
+        haut1 = textureDuMoment=TextureFactory.getInstance().getTextureSelonNom("images/pacmanUp.png");
+        haut2 = textureDuMoment=TextureFactory.getInstance().getTextureSelonNom("images/pacmanUp-2.png");
+        bas1 = textureDuMoment=TextureFactory.getInstance().getTextureSelonNom("images/pacmanDown.png");
+        bas2 = textureDuMoment=TextureFactory.getInstance().getTextureSelonNom("images/pacmanDown-2.png");
+
+
+        textureDuMoment=neutre;
 	}
 	
-	public void setCoord(int x,int y)
+	public void setCoord(int l,int c)
 	{
-		setL(x);
-		setC(y);
+		setL(l);
+		setC(c);
 	}
 
 	public void setDirection(Direction direction) {
@@ -53,6 +82,62 @@ public class Pacman extends MovingGameElement{
 	public String getPng() {
 		return png;
 	}
-	
 
+    public Texture getTextureDuMoment() {
+        return textureDuMoment;
+    }
+
+    public void setNextTextureDuMoment() {
+        switch(direction)
+        {
+            case Neutre:
+                textureDuMoment=neutre;
+                break;
+            case Right:
+                //je me permet le === car texture factory est un singleton
+                if (textureDuMoment != droite1 && textureDuMoment != droite2)
+                    textureDuMoment=droite1;
+                else
+                    {
+                    if (textureDuMoment == droite1 )
+                        textureDuMoment = droite2;
+                    else
+                        textureDuMoment = droite1;
+                    }
+                break;
+            case Left:
+                if (textureDuMoment != gauche1&& textureDuMoment != gauche2)
+                    textureDuMoment=gauche1;
+                else
+                {
+                    if (textureDuMoment == gauche1)
+                        textureDuMoment = gauche2;
+                    else
+                        textureDuMoment = gauche1;
+                }
+                break;
+            case Up:
+				if (textureDuMoment != haut1&& textureDuMoment != haut2)
+					textureDuMoment=haut1;
+				else
+				{
+					if (textureDuMoment == haut1)
+						textureDuMoment = haut2;
+					else
+						textureDuMoment = haut1;
+				}
+				break;
+            case Down:
+				if (textureDuMoment != bas1&& textureDuMoment != bas2)
+					textureDuMoment=bas1;
+				else
+				{
+					if (textureDuMoment == bas1)
+						textureDuMoment = bas2;
+					else
+						textureDuMoment = bas1;
+				}
+				break;
+        }
+    }
 }

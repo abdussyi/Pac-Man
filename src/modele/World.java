@@ -5,8 +5,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-import vue.TextureFactory;
-
 public class World {
 	//Les champs
 	// 28 colonne et 31 lignes
@@ -34,10 +32,10 @@ public class World {
 		pacman.setCoord(23, 14);
 	}
 	
-	public void setPacmanPosition(int x,int y)
+	public void setPacmanPosition(int l,int c)
 	{
-		pacman.setX(x);
-		pacman.setY(y);
+		pacman.setL(l);
+		pacman.setC(c);
 		//monde[x][y]=pacman;
 	}
 	

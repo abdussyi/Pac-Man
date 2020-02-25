@@ -6,13 +6,19 @@ public class MovingGameElement extends GameElement {
 
     }
 
+    Direction direction;
+
     @Override
     public String getPng() {
         return null;
     }
 
+
     @Override
     public String getNomChose() {
         return null;
     }
+
+    public Direction getDirection(){ return direction;}
+    public void setDirection(Direction d){ direction = d;}
 }
