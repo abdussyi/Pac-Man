@@ -1,6 +1,6 @@
 package modele;
 
-public class Pacman extends GameElement{
+public class Pacman extends MovingGameElement{
 	
 	private int x,y;
 	

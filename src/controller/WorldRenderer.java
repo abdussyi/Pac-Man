@@ -21,28 +21,8 @@ public class WorldRenderer {
 		down=false;
 	}
 	
-	public void updateDuPacman(World world)
-	{
-		
-	}
-	/*
-	 public void updatePosition(float deltaTime) {
-	        switch (mCurrentDirection) {
-	            case LEFT:
-	                mPosition.x -= (mSpeed * deltaTime);
-	                break;
-	            case RIGHT:
-	                mPosition.x += (mSpeed * deltaTime);
-	                break;
-	            case UP:
-	                mPosition.y -= (mSpeed * deltaTime);
-	                break;
-	            case DOWN:
-	                mPosition.y += (mSpeed * deltaTime);
-	                break;
-	        }
-	    }
-	*/
+
+
 	public void deplacementPacmanGauche(World world)
 	{
 		int x=world.pacman.getX();//futur coordonnée de 2pac
@@ -53,7 +33,7 @@ public class WorldRenderer {
 			throw new IllegalArgumentException("Impossible de franchir le mur");
 		//ici une fonction devrait update le terrain selon le deplacement
 		
-		world.getMonde()[world.pacman.getX()][world.pacman.getY()]=new Pellet();
+		//world.getMonde()[world.pacman.getX()][world.pacman.getY()]=new Pellet();
 		
 		world.setPacmanPosition(world.pacman.getX(), world.pacman.getY()-1);
 	}
@@ -68,7 +48,7 @@ public class WorldRenderer {
 			throw new IllegalArgumentException("Impossible de franchir le mur");
 		//ici une fonction devrait update le terrain selon le deplacement
 		
-		world.getMonde()[world.pacman.getX()][world.pacman.getY()]=new Pellet();
+		//world.getMonde()[world.pacman.getX()][world.pacman.getY()]=new Pellet();
 		world.setPacmanPosition(world.pacman.getX(), world.pacman.getY()+1);
 	}
 	
@@ -82,7 +62,7 @@ public class WorldRenderer {
 			throw new IllegalArgumentException("Impossible de franchir le mur");
 		//ici une fonction devrait update le terrain selon le deplacement
 		
-		world.getMonde()[world.pacman.getX()][world.pacman.getY()]=new Pellet();
+		//world.getMonde()[world.pacman.getX()][world.pacman.getY()]=new Pellet();
 		
 		world.setPacmanPosition(world.pacman.getX()-1, world.pacman.getY());
 	}
@@ -97,7 +77,7 @@ public class WorldRenderer {
 			throw new IllegalArgumentException("Impossible de franchir le mur");
 		//ici une fonction devrait update le terrain selon le deplacement
 		
-		world.getMonde()[world.pacman.getX()][world.pacman.getY()]=new Pellet();
+		//world.getMonde()[world.pacman.getX()][world.pacman.getY()]=new Pellet();
 		
 		world.setPacmanPosition(world.pacman.getX()+1, world.pacman.getY());
 	}

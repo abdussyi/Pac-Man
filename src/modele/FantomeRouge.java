@@ -1,6 +1,6 @@
 package modele;
 
-public class FantomeRouge extends GameElement{
+public class FantomeRouge extends MovingGameElement{
 	
 	FantomeRouge()
 	{

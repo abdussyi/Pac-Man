@@ -1,11 +1,10 @@
 package vue;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import controller.MonEcouteur;
@@ -17,7 +16,8 @@ public class Fenetre implements Screen {
     World world;
     WorldRenderer worldRenderer;
     float deltaTime;
-
+    //on peut untiliser une animation pour la bouche de pacman
+    Animation anil;
     public Fenetre(World world)
     {
         this.world=world;
@@ -27,7 +27,7 @@ public class Fenetre implements Screen {
         batch = new SpriteBatch();
     }
 
-    public void afficherTerrain(World world)
+    public void DessinerTerrain(World world)
     {
         batch.begin();
         int i,j;
@@ -48,6 +48,17 @@ public class Fenetre implements Screen {
         batch.end();
     }
 
+    public void dessinerPacman()
+    {
+        int x = world.pacman.getX();
+        int y = world.pacman.getY();
+        batch.begin();
+        //à revoir ce coin
+        Texture temp = TextureFactory.getInstance().getTextureSelonNom(world.pacman.getPng());
+        //conversion en coordonnees ecran
+        batch.draw(temp, y*21,(30-x)*21 );
+        batch.end();
+    }
 
     @Override
     public void show() {
@@ -55,10 +66,13 @@ public class Fenetre implements Screen {
     }
 
     @Override
-    public void render(float v) {
+    public void render(float delta) {
         Gdx.gl.glClearColor(1, 1, 1, 1);
+
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        afficherTerrain(world);
+        DessinerTerrain(world);
+
+        dessinerPacman();
     }
 
     @Override

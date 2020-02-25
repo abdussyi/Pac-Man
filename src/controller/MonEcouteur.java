@@ -18,7 +18,7 @@ public class MonEcouteur implements InputProcessor {
 	}
 	
 	
-	
+	//cette fonction devrait set seulement la direction
 	@Override
 	public boolean keyDown(int keycode) {
 		float deltaTime;

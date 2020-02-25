@@ -27,9 +27,10 @@ public class World {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
 		//L'emplacement du pacman est faites manuellemeent
 		pacman = new Pacman();
-		monde[23][14]=pacman;
+		//monde[23][14]=pacman;
 		pacman.setCoord(23, 14);
 	}
 	
@@ -37,7 +38,7 @@ public class World {
 	{
 		pacman.setX(x);
 		pacman.setY(y);
-		monde[x][y]=pacman;
+		//monde[x][y]=pacman;
 	}
 	
 	public GameElement[][] getMonde() {
@@ -52,7 +53,8 @@ public class World {
 	{
 		getMonde()[ligne][colonne]=chose;
 	}
-	
+
+	/*La ligne courante permet la construction de la grille du world un à un*/
 	public void augmenterLigneColonneCourante()
 	{
 		if(colonneCourante != 27)
