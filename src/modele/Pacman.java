@@ -2,33 +2,42 @@ package modele;
 
 public class Pacman extends MovingGameElement{
 	
-	private int x,y;
-	
+	private int l, c;
+	Direction direction;
 	
 	public Pacman()
 	{
 		setPng("images/pacmanRight.png");
-		x=0;
-		y=0;
+		l =0;
+		c =0;
+		setDirection(Direction.Neutre);
 	}
 	
 	public void setCoord(int x,int y)
 	{
-		setX(x);
-		setY(y);
+		setL(x);
+		setC(y);
 	}
-	
-	public int getX() {
-		return x;
+
+	public void setDirection(Direction direction) {
+		this.direction = direction;
 	}
-	public void setX(int x) {
-		this.x = x;
+
+	public Direction getDirection() {
+		return direction;
 	}
-	public int getY() {
-		return y;
+
+	public int getL() {
+		return l;
 	}
-	public void setY(int y) {
-		this.y = y;
+	public void setL(int x) {
+		this.l = x;
+	}
+	public int getC() {
+		return c;
+	}
+	public void setC(int y) {
+		this.c = y;
 	}
 	@Override
 	public String getNomChose() {
