@@ -28,11 +28,8 @@ public class WorldRenderer {
 			throw new IllegalArgumentException("Les coordonnée de pacman sont irrealisable");
 		if(world.getMonde()[x][y] instanceof Mur )
 			throw new IllegalArgumentException("Impossible de franchir le mur");
-		//ici une fonction devrait update le terrain selon le deplacement
-		
-		//world.getMonde()[world.pacman.getL()][world.pacman.getC()]=new Pellet();
-		
-		world.setPacmanPosition(world.pacman.getL(), world.pacman.getC()-1);
+
+		world.setPacmanPosition(x, y);
 	}
 	
 	public void deplacementPacmanDroite(World world)
@@ -43,10 +40,8 @@ public class WorldRenderer {
 			throw new IllegalArgumentException("Les coordonnée de pacman sont irrealisable");
 		if(world.getMonde()[x][y] instanceof Mur )
 			throw new IllegalArgumentException("Impossible de franchir le mur");
-		//ici une fonction devrait update le terrain selon le deplacement
-		
-		//world.getMonde()[world.pacman.getL()][world.pacman.getC()]=new Pellet();
-		world.setPacmanPosition(world.pacman.getL(), world.pacman.getC()+1);
+
+		world.setPacmanPosition(x, y);
 	}
 	
 	public void deplacementPacmanHaut(World world)
@@ -57,11 +52,9 @@ public class WorldRenderer {
 			throw new IllegalArgumentException("Les coordonnée de pacman sont irrealisable");
 		if(world.getMonde()[x][y] instanceof Mur )
 			throw new IllegalArgumentException("Impossible de franchir le mur");
-		//ici une fonction devrait update le terrain selon le deplacement
+
 		
-		//world.getMonde()[world.pacman.getL()][world.pacman.getC()]=new Pellet();
-		
-		world.setPacmanPosition(world.pacman.getL()-1, world.pacman.getC());
+		world.setPacmanPosition(x, y);
 	}
 	
 	public void deplacementPacmanBas(World world)
@@ -72,11 +65,9 @@ public class WorldRenderer {
 			throw new IllegalArgumentException("Les coordonnée de pacman sont irrealisable");
 		if(world.getMonde()[x][y] instanceof Mur )
 			throw new IllegalArgumentException("Impossible de franchir le mur");
-		//ici une fonction devrait update le terrain selon le deplacement
+
 		
-		//world.getMonde()[world.pacman.getL()][world.pacman.getC()]=new Pellet();
-		
-		world.setPacmanPosition(world.pacman.getL()+1, world.pacman.getC());
+		world.setPacmanPosition(x, y);
 	}
 
 

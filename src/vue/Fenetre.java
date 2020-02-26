@@ -16,7 +16,12 @@ public class Fenetre implements Screen {
     SpriteBatch batch;
     World world;
     WorldRenderer worldRenderer;
-    float elapsedTime=0;
+
+    //pour le pacman
+    private float elapsedTime=0;
+    private int cpt = 0;
+    //.04f est le temps
+    private final float frameLength = .04f;
     //on peut untiliser une animation pour la bouche de pacman
 
     public Fenetre(World world)
@@ -49,19 +54,33 @@ public class Fenetre implements Screen {
         batch.end();
     }
 
+    //à voir si le deplacer dans world renderer n'est pas plus approprié
+    private void handleFrame(float delta) {
+        elapsedTime += delta;
+        while (elapsedTime > frameLength) {
+            cpt = (cpt + 1) % 4;
+            elapsedTime -= frameLength;
+            if (cpt == 0) worldRenderer.updatePacman();
+        }
+    }
+
     public void dessinerPacman()
     {
         //ici faut faire le changement de texture changement de texture
         int x = world.pacman.getL();
         int y = world.pacman.getC();
+        world.pacman.setNextTextureDuMoment();
 
         batch.begin();
         //à revoir ce coin
-        world.pacman.setNextTextureDuMoment();
         Texture temp = world.pacman.getTextureDuMoment();
+
         //conversion en coordonnees ecran
+
         batch.draw(temp, y*21,(30-x)*21 );
+
         batch.end();
+
     }
 
 
@@ -70,6 +89,9 @@ public class Fenetre implements Screen {
     public void show() {
 
     }
+
+
+
 
     /*
     ici, à ma grande stupefaction, le delta est deja initialisé par le systeme.
@@ -80,10 +102,9 @@ public class Fenetre implements Screen {
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+        handleFrame(delta);
+
         DessinerTerrain(world);
-
-        worldRenderer.updatePacman();
-
 
         dessinerPacman();
     }
