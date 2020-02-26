@@ -16,8 +16,17 @@ public class WorldRenderer {
 		right=false;
 		up=false;
 		down=false;
+		setMooveallowed(false);
 	}
-	
+	private boolean mooveallowed;
+
+	public boolean isMooveallowed() {
+		return mooveallowed;
+	}
+
+	public void setMooveallowed(boolean mooveallowed) {
+		this.mooveallowed = mooveallowed;
+	}
 
 
 	public void deplacementPacmanGauche(World world)
@@ -25,10 +34,20 @@ public class WorldRenderer {
 		int x=world.pacman.getL();//futur coordonnée de 2pac
 		int y=world.pacman.getC()-1;
 		if(x<0||x>30||y<0||y>27)
+		{
+			world.pacman.setDirY(0);
+			setMooveallowed(false);
 			throw new IllegalArgumentException("Les coordonnée de pacman sont irrealisable");
+		}
 		if(world.getMonde()[x][y] instanceof Mur )
+		{
+			world.pacman.setDirY(0);
+			setMooveallowed(false);
 			throw new IllegalArgumentException("Impossible de franchir le mur");
-
+		}
+		setMooveallowed(true);
+		world.pacman.setDirY(-1);
+		world.pacman.setDirX(0);
 		world.setPacmanPosition(x, y);
 	}
 	
@@ -37,10 +56,20 @@ public class WorldRenderer {
 		int x=world.pacman.getL();//futur coordonnée de 2pac
 		int y=world.pacman.getC()+1;
 		if(x<0||x>30||y<0||y>27)
+		{
+			setMooveallowed(false);
+			world.pacman.setDirY(0);
 			throw new IllegalArgumentException("Les coordonnée de pacman sont irrealisable");
+		}
 		if(world.getMonde()[x][y] instanceof Mur )
+		{
+			setMooveallowed(false);
+			world.pacman.setDirY(0);
 			throw new IllegalArgumentException("Impossible de franchir le mur");
-
+		}
+		setMooveallowed(true);
+		world.pacman.setDirY(1);
+		world.pacman.setDirX(0);
 		world.setPacmanPosition(x, y);
 	}
 	
@@ -49,11 +78,20 @@ public class WorldRenderer {
 		int x=world.pacman.getL()-1;//futur coordonnée de 2pac
 		int y=world.pacman.getC();
 		if(x<0||x>30||y<0||y>27)
+		{
+			world.pacman.setDirX(1);
+			setMooveallowed(false);
 			throw new IllegalArgumentException("Les coordonnée de pacman sont irrealisable");
+		}
 		if(world.getMonde()[x][y] instanceof Mur )
+		{
+			world.pacman.setDirX(0);
+			setMooveallowed(false);
 			throw new IllegalArgumentException("Impossible de franchir le mur");
-
-		
+		}
+		setMooveallowed(true);
+		world.pacman.setDirX(1);
+		world.pacman.setDirY(0);
 		world.setPacmanPosition(x, y);
 	}
 	
@@ -62,11 +100,21 @@ public class WorldRenderer {
 		int x=world.pacman.getL()+1;//futur coordonnée de 2pac
 		int y=world.pacman.getC();
 		if(x<0||x>30||y<0||y>27)
+		{
+			world.pacman.setDirX(0);
+			setMooveallowed(false);
 			throw new IllegalArgumentException("Les coordonnée de pacman sont irrealisable");
+		}
 		if(world.getMonde()[x][y] instanceof Mur )
+		{
+			world.pacman.setDirX(0);
+			setMooveallowed(false);
 			throw new IllegalArgumentException("Impossible de franchir le mur");
+		}
+		world.pacman.setDirX(-1);
+		world.pacman.setDirY(0);
+		setMooveallowed(true);
 
-		
 		world.setPacmanPosition(x, y);
 	}
 

@@ -10,6 +10,34 @@ public class Pacman extends MovingGameElement{
 	private Direction direction;
 	private Texture textureDuMoment;
 
+	private int dirL;
+	private int dirC;
+	private int vie;
+
+	public void setDirX(int dirL) {
+		this.dirL = dirL;
+	}
+
+	public void setDirY(int dirC) {
+		this.dirC = dirC;
+	}
+
+	public void setVie(int vie) {
+		this.vie = vie;
+	}
+
+	public int getDirL() {
+		return dirL;
+	}
+
+	public int getDirC() {
+		return dirC;
+	}
+
+	public int getVie() {
+		return vie;
+	}
+
 	private Texture neutre;
 	private Texture droite1;
 	private Texture droite2;
@@ -87,6 +115,70 @@ public class Pacman extends MovingGameElement{
         return textureDuMoment;
     }
 
+
+	public void setNextTextureDuMoment(int cpt) {
+		switch(cpt) {
+			case 0:
+				textureDuMoment = textureDuMoment;
+				break;
+			case 1:
+				switch (direction) {
+					case Up:
+						textureDuMoment = haut1;
+						break;
+					case Down:
+						textureDuMoment = bas1;
+						break;
+					case Left:
+						textureDuMoment = gauche1;
+						break;
+					case Right:
+						textureDuMoment = droite1;
+						break;
+					default:
+						break;
+				}
+				break;
+			case 2:
+				switch (direction) {
+					case Up:
+						textureDuMoment = haut2;
+						break;
+					case Down:
+						textureDuMoment = bas2;
+						break;
+					case Left:
+						textureDuMoment = gauche2;
+						break;
+					case Right:
+						textureDuMoment = droite2;
+						break;
+					default:
+						break;
+				}
+				break;
+			case 3:
+				switch (direction) {
+					case Up:
+						textureDuMoment = haut1;
+						break;
+					case Down:
+						textureDuMoment = bas1;
+						break;
+					case Left:
+						textureDuMoment = gauche1;
+						break;
+					case Right:
+						textureDuMoment = droite1;
+						break;
+					default:
+						break;
+				}
+				break;
+		}
+	}
+
+/*
     public void setNextTextureDuMoment() {
         switch(direction)
         {
@@ -139,5 +231,5 @@ public class Pacman extends MovingGameElement{
 				}
 				break;
         }
-    }
+    }*/
 }

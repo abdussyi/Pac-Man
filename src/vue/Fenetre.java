@@ -17,12 +17,21 @@ public class Fenetre implements Screen {
     World world;
     WorldRenderer worldRenderer;
 
+
     //pour le pacman
     private float elapsedTime=0;
+
+    public int getCpt() {
+        return cpt;
+    }
+
     private int cpt = 0;
     //.04f est le temps
-    private final float frameLength = .04f;
+    private final float frameLength = .07f;
     //on peut untiliser une animation pour la bouche de pacman
+
+    private int xtoadd=0;
+    private int ytoadd=0;
 
     public Fenetre(World world)
     {
@@ -35,7 +44,7 @@ public class Fenetre implements Screen {
 
     public void DessinerTerrain(World world)
     {
-        batch.begin();
+
         int i,j;
         int x=0;
         int y=0;
@@ -51,7 +60,7 @@ public class Fenetre implements Screen {
             y=y+21;
             x=0;
         }
-        batch.end();
+
     }
 
     //à voir si le deplacer dans world renderer n'est pas plus approprié
@@ -67,19 +76,32 @@ public class Fenetre implements Screen {
     public void dessinerPacman()
     {
         //ici faut faire le changement de texture changement de texture
-        int x = world.pacman.getL();
-        int y = world.pacman.getC();
-        world.pacman.setNextTextureDuMoment();
+        int x = (30 - world.pacman.getL())*21;
+        int y = world.pacman.getC()*21;
+        world.pacman.setNextTextureDuMoment(cpt);
 
-        batch.begin();
+        xtoadd = (int)(world.pacman.getDirL() * ((cpt) * 21 / 4));
+        ytoadd = (int)(world.pacman.getDirC() * ((cpt) * 21 / 4));
+
+        if (worldRenderer.isMooveallowed())
+        {
+            System.out.println(x);
+            System.out.println(y);
+            x+= xtoadd;
+            y+= ytoadd;
+            System.out.println(x);
+            System.out.println(y);
+        }
+
         //à revoir ce coin
         Texture temp = world.pacman.getTextureDuMoment();
 
+
         //conversion en coordonnees ecran
 
-        batch.draw(temp, y*21,(30-x)*21 );
-
-        batch.end();
+        batch.draw(temp,y,x);
+        //batch.draw(temp, y*21,(30-x)*21 );
+        //batch.draw(temp,y*21,(30-x)*21, 21, 21);
 
     }
 
@@ -103,10 +125,11 @@ public class Fenetre implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         handleFrame(delta);
-
+        batch.begin();
         DessinerTerrain(world);
 
         dessinerPacman();
+        batch.end();
     }
 
     @Override
