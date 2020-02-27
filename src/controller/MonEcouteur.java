@@ -23,28 +23,30 @@ public class MonEcouteur implements InputProcessor {
 	@Override
 	public boolean keyDown(int keycode) {
 		try {
-			//selon la touche appuyer, pacman sera déplacé je sais pas ou
 			switch (keycode) {
 			case Keys.LEFT:
-				world.pacman.setPng("images/pacmanLeft.png");
-				//while(!(Gdx.input.isKeyPressed(Keys.RIGHT))||!(Gdx.input.isKeyPressed(Keys.UP))||!(Gdx.input.isKeyPressed(Keys.DOWN)))
-					//worldRenderer.deplacementPacmanGauche(world);
-				world.pacman.setDirection(Direction.Left);
+				if (world.pacman.getDirection()!=Direction.Neutre)
+					world.pacman.setProchaineDirection(Direction.Left);
+				else
+					world.pacman.setDirection(Direction.Left);
 				break;
 			case Keys.RIGHT:
-				world.pacman.setPng("images/pacmanRight.png");
-				//worldRenderer.deplacementPacmanDroite(world);
-				world.pacman.setDirection(Direction.Right);
+				if (world.pacman.getDirection()!=Direction.Neutre)
+					world.pacman.setProchaineDirection(Direction.Right);
+				else
+					world.pacman.setDirection(Direction.Right);
 				break;
 			case Keys.UP:
-				world.pacman.setPng("images/pacmanUp.png");
-				//worldRenderer.deplacementPacmanHaut(world);
-				world.pacman.setDirection(Direction.Up);
+				if (world.pacman.getDirection()!=Direction.Neutre)
+					world.pacman.setProchaineDirection(Direction.Up);
+				else
+					world.pacman.setDirection(Direction.Up);
 				break;
 			case Keys.DOWN:
-				world.pacman.setPng("images/pacmanDown.png");
-				//worldRenderer.deplacementPacmanBas(world);
-				world.pacman.setDirection(Direction.Down);
+				if (world.pacman.getDirection()!=Direction.Neutre)
+					world.pacman.setProchaineDirection(Direction.Down);
+				else
+					world.pacman.setDirection(Direction.Down);
 				break;
 			}
 		} catch (IllegalArgumentException e) {
@@ -79,19 +81,16 @@ public class MonEcouteur implements InputProcessor {
 
 	@Override
 	public boolean touchDragged(int screenX, int screenY, int pointer) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean mouseMoved(int screenX, int screenY) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean scrolled(int amount) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 	

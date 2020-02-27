@@ -8,6 +8,38 @@ public class Pacman extends MovingGameElement{
 	
 	private int l, c;
 	private Direction direction;
+	private Direction prochaineDirection;
+
+	public Pacman()
+	{
+		setPng("images/pacmanRight.png");
+		l =0;
+		c =0;
+		setDirection(Direction.Neutre);
+		setProchaineDirection(Direction.Neutre);
+
+		neutre = textureDuMoment=TextureFactory.getInstance().getTextureSelonNom("images/pacman-3.png");
+		droite1 = textureDuMoment=TextureFactory.getInstance().getTextureSelonNom("images/pacmanRight.png");
+		droite2 = textureDuMoment=TextureFactory.getInstance().getTextureSelonNom("images/pacmanRight-2.png");
+		gauche1 = textureDuMoment=TextureFactory.getInstance().getTextureSelonNom("images/pacmanLeft.png");
+		gauche2 = textureDuMoment=TextureFactory.getInstance().getTextureSelonNom("images/pacmanLeft-2.png");
+		haut1 = textureDuMoment=TextureFactory.getInstance().getTextureSelonNom("images/pacmanUp.png");
+		haut2 = textureDuMoment=TextureFactory.getInstance().getTextureSelonNom("images/pacmanUp-2.png");
+		bas1 = textureDuMoment=TextureFactory.getInstance().getTextureSelonNom("images/pacmanDown.png");
+		bas2 = textureDuMoment=TextureFactory.getInstance().getTextureSelonNom("images/pacmanDown-2.png");
+
+
+		textureDuMoment=neutre;
+	}
+
+	public Direction getProchaineDirection() {
+		return prochaineDirection;
+	}
+
+	public void setProchaineDirection(Direction prochaineDirection) {
+		this.prochaineDirection = prochaineDirection;
+	}
+
 	private Texture textureDuMoment;
 
 	private int dirL;
@@ -48,27 +80,7 @@ public class Pacman extends MovingGameElement{
 	private Texture bas1;
 	private Texture bas2;
 	
-	public Pacman()
-	{
-		setPng("images/pacmanRight.png");
-		l =0;
-		c =0;
-		setDirection(Direction.Neutre);
 
-
-		neutre = textureDuMoment=TextureFactory.getInstance().getTextureSelonNom("images/pacman-3.png");
-        droite1 = textureDuMoment=TextureFactory.getInstance().getTextureSelonNom("images/pacmanRight.png");
-        droite2 = textureDuMoment=TextureFactory.getInstance().getTextureSelonNom("images/pacmanRight-2.png");
-        gauche1 = textureDuMoment=TextureFactory.getInstance().getTextureSelonNom("images/pacmanLeft.png");
-        gauche2 = textureDuMoment=TextureFactory.getInstance().getTextureSelonNom("images/pacmanLeft-2.png");
-        haut1 = textureDuMoment=TextureFactory.getInstance().getTextureSelonNom("images/pacmanUp.png");
-        haut2 = textureDuMoment=TextureFactory.getInstance().getTextureSelonNom("images/pacmanUp-2.png");
-        bas1 = textureDuMoment=TextureFactory.getInstance().getTextureSelonNom("images/pacmanDown.png");
-        bas2 = textureDuMoment=TextureFactory.getInstance().getTextureSelonNom("images/pacmanDown-2.png");
-
-
-        textureDuMoment=neutre;
-	}
 	
 	public void setCoord(int l,int c)
 	{
